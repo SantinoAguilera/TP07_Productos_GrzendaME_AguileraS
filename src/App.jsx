@@ -1,5 +1,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css'
+import MainLayout from './layouts/MainLayout';
+import Home from './pages/Home';
+import Contacto from './pages/Contacto'
+import Productos from './pages/Productos'
+import ProductoDetalle from './pages/ProductoDetalle'
+import QuienesSomos from './pages/QuienesSomos'
 
 function App() {
 
@@ -7,7 +13,13 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Home />}></Route>
+          <Route path='/TP07_Productos_GrzendaME_AguileraS/' element={<MainLayout />}>
+            <Route index element={<Home />}></Route>
+            <Route path='/TP07_Productos_GrzendaME_AguileraS/contacto' element={<Contacto />}></Route>
+            <Route path='/TP07_Productos_GrzendaME_AguileraS/productodetalle' element={<ProductoDetalle />}></Route>
+            <Route path='/TP07_Productos_GrzendaME_AguileraS/productos' element={<Productos />}></Route>
+            <Route path='/TP07_Productos_GrzendaME_AguileraS/quienessomos' element={<QuienesSomos />}></Route>
+          </Route>
         </Routes>
       </BrowserRouter>
     </>
