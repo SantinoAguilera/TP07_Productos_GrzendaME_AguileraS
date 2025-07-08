@@ -1,16 +1,21 @@
+import { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import './Navbar.css'
 import logo from '/src/assets/catalogLogo.png';
 
 function Navbar() {
-  let categorias = []; // Esto no debería de ser un estado?
-  axios.get("https://dummyjson.com/products/categories")
-  .then((res) =>{
-    categorias = res.data;
-    console.log(res);
-  }) // Esto probablemente debería de ir en un UseEffect
-  console.log(categorias);
+  const [categorias, setCategorias] = useState([]);
+  let categoriaHTML;
+  useEffect(() => {
+    axios.get("https://dummyjson.com/products/categories")
+    .then((res) =>{
+      setCategorias(res.data);
+    })
+  }, []);
+  categoriaHTML = categorias.map((categoria) => {
+    return <li><Link className="dropdown-item" to={"/TP07_Productos_GrzendaME_AguileraS/productos:" + categoria.name}>{categoria.name}</Link></li>
+  })
 
   return (
     <div className='HeaderBody'>
@@ -23,9 +28,7 @@ function Navbar() {
         <ul className="dropdown-menu">
           <li><Link className="dropdown-item" to={"/TP07_Productos_GrzendaME_AguileraS/productos"}>Ver todos</Link></li>
           <li><hr className="dropdown-divider"></hr></li>
-          {categorias.map((categoria) => {
-            <li><Link className="dropdown-item" to={"/TP07_Productos_GrzendaME_AguileraS/productos:" + categoria}>{categoria.name}</Link></li>
-          })}
+          {categoriaHTML}
         </ul>
       </div>
       <Link to={"/TP07_Productos_GrzendaME_AguileraS/quienessomos"} className='HeaderButton'><p>Quienes somos</p></Link>
