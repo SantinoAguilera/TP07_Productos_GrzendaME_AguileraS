@@ -1,21 +1,23 @@
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import './Navbar.css'
+import logo from '/src/assets/catalogLogo.png';
 
 function Navbar() {
-  let categorias = [];
+  let categorias = []; // Esto no debería de ser un estado?
   axios.get("https://dummyjson.com/products/categories")
   .then((res) =>{
     categorias = res.data;
     console.log(res);
-  })
+  }) // Esto probablemente debería de ir en un UseEffect
   console.log(categorias);
 
   return (
     <div className='HeaderBody'>
-        <Link to={"/TP07_Productos_GrzendaME_AguileraS/home"}><img src='src/assets/logo.extension'></img></Link>
-        <Link to={"/TP07_Productos_GrzendaME_AguileraS/contacto"}><p>Contacto</p></Link>
-        <div className="dropdown">
-        <button className="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <Link to={"/TP07_Productos_GrzendaME_AguileraS"} className='HeaderButton'><img src={logo} className="HeaderLogo"></img></Link>
+      <Link to={"/TP07_Productos_GrzendaME_AguileraS/contacto"} className='HeaderButton'><p>Contacto</p></Link>
+      <div className='HeaderButton'>
+        <button type="button" data-bs-toggle="dropdown" aria-expanded="false">
           Productos
         </button>
         <ul className="dropdown-menu">
@@ -25,9 +27,9 @@ function Navbar() {
             <li><Link className="dropdown-item" to={"/TP07_Productos_GrzendaME_AguileraS/productos:" + categoria}>{categoria.name}</Link></li>
           })}
         </ul>
-        </div>
-          <Link to={"/TP07_Productos_GrzendaME_AguileraS/quienessomos"}><p>Quienes somos</p></Link>
-        </div>
+      </div>
+      <Link to={"/TP07_Productos_GrzendaME_AguileraS/quienessomos"} className='HeaderButton'><p>Quienes somos</p></Link>
+    </div>
   )
 }
 

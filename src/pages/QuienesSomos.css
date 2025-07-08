@@ -1,0 +1,30 @@
+.creditosScreen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: rgb(200, 200, 170);
+    padding: 2rem;
+    text-align: center;
+}
+
+.text {
+    color: black;
+    font-size: 20px;
+    margin-bottom: 1rem;
+}
+
+.description {
+    color: black;
+    font-size: 16px;
+    margin-bottom: 1.5rem;
+}
+
+.creditsImage {
+    height: 300px;
+    width: 500px;
+    margin: 10px;
+    object-fit: cover;
+    border-radius: 10px;
+}
