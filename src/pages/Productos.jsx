@@ -6,8 +6,8 @@ function Productos() {
   let { categoria } = useParams();
   const [productos, setProductos] = useState([]);
   useEffect(() => {
-    let url = "https://dummyjson.com/products/category/" + categoria + "?limit=0";
-    if (categoria == "todos") url = "https://dummyjson.com/products?limit=0";
+    let url = "https://dummyjson.com/products/category/" + categoria + "?limit=0?select=title,category,price,thumbnail";
+    if (categoria == "todos") url = "https://dummyjson.com/products?limit=0?select=title,category,price,thumbnail";
     axios.get(url)
       .then((res) => {
         setProductos(res.data.products);
