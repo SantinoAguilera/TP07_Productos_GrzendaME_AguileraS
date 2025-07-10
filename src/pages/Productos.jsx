@@ -1,15 +1,26 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 function Productos() {
+  let { categoria } = useParams();
+  const [productos, setProductos] = useState([]);
+  useEffect(() => {
+    let url = "https://dummyjson.com/products/category/" + categoria + "?limit=0";
+    if (categoria == "todos") url = "https://dummyjson.com/products?limit=0";
+    axios.get(url)
+      .then((res) => {
+        setProductos(res.data.products);
+      })
+  }, [categoria]);
+  let productosHTML = productos.map((producto, index) => {
+    return <div key={index}>{producto.title}</div>
+  })
+
   return (
-    <div>Productos</div>
-    /*
-    Voy a suponer que tarde o temprano vas a checkear este archivo, así que te dejo lo que hice hasta ahora:
-      1. Estile el Navbar
-      2. Empecé y terminé QuienesSomos
-      3. Avance un poco con Home.jsx, agregandole probablemente el banner mas feo posible.
-    Avanzá con la API, yo tengo una charla de la UBA. Cualquier cosa avisame y lo laburó despues.
-    */
+    <>
+      {productosHTML}
+    </>
   )
 }
 

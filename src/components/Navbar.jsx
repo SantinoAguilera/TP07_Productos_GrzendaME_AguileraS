@@ -1,20 +1,19 @@
 import { useState, useEffect } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './Navbar.css'
 import logo from '/src/assets/catalogLogo.png';
 
 function Navbar() {
   const [categorias, setCategorias] = useState([]);
-  let categoriaHTML;
   useEffect(() => {
     axios.get("https://dummyjson.com/products/categories")
-    .then((res) =>{
-      setCategorias(res.data);
-    })
+      .then((res) => {
+        setCategorias(res.data);
+      })
   }, []);
-  categoriaHTML = categorias.map((categoria) => {
-    return <li><Link className="dropdown-item" to={"/TP07_Productos_GrzendaME_AguileraS/productos:" + categoria.name}>{categoria.name}</Link></li>
+  let categoriaHTML = categorias.map((categoria, index) => {
+    return <li key={index}><Link className="dropdown-item" to={"/TP07_Productos_GrzendaME_AguileraS/productos/" + categoria.slug}>{categoria.name}</Link></li>
   })
 
   return (
@@ -26,7 +25,7 @@ function Navbar() {
           Productos
         </button>
         <ul className="dropdown-menu">
-          <li><Link className="dropdown-item" to={"/TP07_Productos_GrzendaME_AguileraS/productos"}>Ver todos</Link></li>
+          <li><Link className="dropdown-item" to={"/TP07_Productos_GrzendaME_AguileraS/productos/todos"}>Ver todos</Link></li>
           <li><hr className="dropdown-divider"></hr></li>
           {categoriaHTML}
         </ul>
