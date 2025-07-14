@@ -1,8 +1,11 @@
 import React from 'react'
+import ContactoFrom from '../components/ContactoForm'
 
 function Contacto() {
   return (
-    <div>Contacto</div>
+    <>
+      <ContactoFrom />
+    </>
   )
 }
 
