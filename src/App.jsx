@@ -16,7 +16,7 @@ function App() {
           <Route path='/TP07_Productos_GrzendaME_AguileraS/' element={<MainLayout />}>
             <Route index element={<Home />}></Route>
             <Route path='/TP07_Productos_GrzendaME_AguileraS/contacto' element={<Contacto />}></Route>
-            <Route path='/TP07_Productos_GrzendaME_AguileraS/productodetalle' element={<ProductoDetalle />}></Route>
+            <Route path='/TP07_Productos_GrzendaME_AguileraS/productodetalle/:id' element={<ProductoDetalle />}></Route>
             <Route path='/TP07_Productos_GrzendaME_AguileraS/productos/:categoria' element={<Productos />}></Route>
             <Route path='/TP07_Productos_GrzendaME_AguileraS/quienessomos' element={<QuienesSomos />}></Route>
           </Route>
