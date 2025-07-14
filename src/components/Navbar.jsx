@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './Navbar.css'
-import logo from '/src/assets/catalogLogo.png';
+import logo from '/src/assets/zarazaLogo.png';
 
 function Navbar() {
   const [categorias, setCategorias] = useState([]);
