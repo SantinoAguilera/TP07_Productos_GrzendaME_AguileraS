@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import './Home.css'
+import HomeCarousel from '../components/HomeCarrousel.jsx';
 
 function Home() {
     return (
@@ -10,7 +11,7 @@ function Home() {
           <p className="lead">
             Tu lugar de confianza para conseguir cosas que probablemente no necesites.
           </p>
-          <Link to={"/TP07_Productos_GrzendaME_AguileraS/productos/todos"} className="btn btn-primary btn-lg mt-3">Ver productos</Link>
+          <Link to={"/TP07_Productos_GrzendaME_AguileraS/productos/todos"} className="btn btn-dark btn-lg mt-3">Ver productos</Link>
         </div>
 
         <div className="bg-secondary text-white py-5">
@@ -25,6 +26,9 @@ function Home() {
               Nuestra misión es clara: gastar plata. Nuestra visión es aún más clara: colapsar la economia. No te pierdas nuestras ofertas de temporada,
               los miércoles de zaraza, y el viernes del descuento místico. Si llegaste hasta acá leyendo, te felicitamos: malgastaste tiempo de tu vida.
             </p>
+
+            <h2>Nuestros Productos (los de la API)</h2>
+            <HomeCarousel />
           </div>
         </div>
       </>
