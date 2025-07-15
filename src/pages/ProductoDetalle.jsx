@@ -1,20 +1,26 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import Carrousel from '../components/Carrousel.jsx'
+import Carousel from '../components/Carousel.jsx'
+import axios from 'axios';
 
 function ProductoDetalle() {
   const { id } = useParams();
 
-  //Usá `https://dummyjson.com/products/${id}` para obtener el producto
+  const [producto, setProducto] = useState({});
+  useEffect(() => {
+    axios.get(`https://dummyjson.com/products/${id}`)
+      .then((res) => {
+        setProducto(res.data);
+      })
+  }, [id]);
 
   return (
     <>
       <h2>{producto.title}</h2>
       <p>Categoría: {producto.category}</p>
       <p>Precio: ${producto.price}</p>
-      <Carrousel images={producto.images}/>
-      {/*<img src={producto.images[0]} alt={producto.title} /> {/* si podés hace un carrousel con todas las imágenes */}
+      <Carousel images={producto.images} />
       <p>{producto.description}</p>
       {/* Acá falta mucha data de los productos */}
     </>

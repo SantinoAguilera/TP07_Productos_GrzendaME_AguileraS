@@ -4,7 +4,7 @@ const ContactForm = () => {
   return (
     <div className="container mt-5">
       <div className="row justify-content-center">
-        <div className="col-md-6">
+        <div className="col-md-6" style={{ marginTop: '50px' }}>
           <h2 className="text-center mb-4">Contacto</h2>
           <form>
             <div className="mb-3">

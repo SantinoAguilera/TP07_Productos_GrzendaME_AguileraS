@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Producto from '../components/Producto';
+import './Productos.css';
 
 function Productos() {
   let { categoria } = useParams();
@@ -19,9 +20,9 @@ function Productos() {
   })
 
   return (
-    <>
+    <div className="producto-card-container">
       {productosHTML}
-    </>
+    </div>
   )
 }
 

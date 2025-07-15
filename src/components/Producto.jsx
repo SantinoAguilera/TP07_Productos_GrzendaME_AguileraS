@@ -1,14 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import './Producto.css'
 
 export default function Producto(props) {
     return (
-        <>
-            <h2>{props.title}</h2>
-            <p>Categoría: {props.category}</p>
-            <p>Precio: ${props.price}</p>
-            <img src={props.thumbnail} alt={props.title} />
-            <Link to={`/TP07_Productos_GrzendaME_AguileraS/productodetalle/${props.id}`}>Ver más</Link>
-        </>
+        <div className="producto-card card m-2">
+            <img src={props.thumbnail} alt={props.title} className="card-img-top producto-img" />
+            <div className="card-body d-flex flex-column justify-content-between">
+                <h5 className="card-title">{props.title}</h5>
+                <p className="card-text mb-1">Categoría: {props.category}</p>
+                <p className="card-text mb-2">Precio: ${props.price}</p>
+                <Link to={`/TP07_Productos_GrzendaME_AguileraS/productodetalle/${props.id}`} className="btn btn-primary mt-auto boton-ver-mas">Ver más</Link>
+            </div>
+        </div>
     )
 }

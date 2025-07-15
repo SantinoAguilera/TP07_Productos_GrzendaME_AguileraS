@@ -18,10 +18,10 @@ function Navbar() {
 
   return (
     <div className='HeaderBody'>
-      <Link to={"/TP07_Productos_GrzendaME_AguileraS"} className='HeaderButton'><img src={logo} className="HeaderLogo"></img></Link>
-      <Link to={"/TP07_Productos_GrzendaME_AguileraS/contacto"} className='HeaderButton'><p>Contacto</p></Link>
-      <div className='HeaderButton'>
-        <button type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <Link to={"/TP07_Productos_GrzendaME_AguileraS"} className='HeaderButton NavbarLogo'><img src={logo} className="HeaderLogo"></img></Link>
+      <div className='NavbarCenter'>
+        <Link to={"/TP07_Productos_GrzendaME_AguileraS/contacto"} className='HeaderButton'>Contacto</Link>
+        <button className='HeaderButton' type="button" data-bs-toggle="dropdown" aria-expanded="false">
           Productos
         </button>
         <ul className="dropdown-menu">
@@ -29,8 +29,8 @@ function Navbar() {
           <li><hr className="dropdown-divider"></hr></li>
           {categoriaHTML}
         </ul>
+        <Link to={"/TP07_Productos_GrzendaME_AguileraS/quienessomos"} className='HeaderButton'>Nosotros</Link>
       </div>
-      <Link to={"/TP07_Productos_GrzendaME_AguileraS/quienessomos"} className='HeaderButton'><p>Quienes somos</p></Link>
     </div>
   )
 }
