@@ -9,7 +9,7 @@ export default function Footer() {
       <p className="mb-0">© 2025 ZarazaShop. Todos los derechos reservados. Hecho con amor y Bootstrap 5.</p>
       <small></small>
       <div className="d-flex flex-column align-items-center mt-3">
-        <Link to="/TP07_Productos_GrzendaME_AguileraS">
+        <Link className="logo-footer" to="/TP07_Productos_GrzendaME_AguileraS">
           <img src={logo} alt="Logo de ZarazaShop" height={50} />
         </Link>
 

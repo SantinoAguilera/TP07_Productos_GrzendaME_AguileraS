@@ -1,3 +1,9 @@
 .boton:hover {
   text-decoration: underline;
 }
+
+.logo-footer {
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
