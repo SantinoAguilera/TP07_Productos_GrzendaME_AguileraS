@@ -23,7 +23,7 @@ function ProductoDetalle() {
       <p className="producto-detalle-categoria">Categoría: <span>{producto.category}</span></p>
       <Carousel images={producto.images} />
       <p className="producto-detalle-descripcion">{producto.description}</p>
-      <Link className="producto-detalle-boton" to="/TP07_Productos_GrzendaME_AguileraS">Comprar</Link>
+      <Link className="producto-detalle-boton" to="/TP07_Productos_GrzendaME_AguileraS">Añadir al carrito</Link>
       <p className="producto-detalle-precio">Precio: ${producto.price}</p>
       <p className="producto-detalle-stock">Stock: <span>{producto.stock}</span></p>
       <p className="producto-detalle-tags">Tags: <span>{producto.tags?.join(', ')}</span></p>
