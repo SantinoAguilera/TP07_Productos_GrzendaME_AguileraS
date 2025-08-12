@@ -8,7 +8,7 @@
     flex-direction: row;
     align-items: center;
     padding: 0.7rem 2.5rem;
-    background: linear-gradient(90deg, #f8fafc 60%, #e0e7ef 100%);
+    background: linear-gradient(90deg, #f8fafc 60%, #ebeef1 100%);
     box-shadow: 0 4px 16px rgba(0,0,0,0.08);
     border-bottom: 1.5px solid #e5e7eb;
     transition: background 0.3s;
@@ -100,4 +100,9 @@
 
 body {
     padding-top: 70px;
+}
+
+.HeaderButton img{
+    width: auto;
+    height: 50px;
 }
