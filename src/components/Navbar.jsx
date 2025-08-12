@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './Navbar.css'
 import logo from '/src/assets/zarazaLogo.png';
-import Carrito from '../assets/carrito negro.png';
+import CartWidget from './CartWidget';
 
 function Navbar() {
   const [categorias, setCategorias] = useState([]);
@@ -32,7 +32,7 @@ function Navbar() {
         </ul>
         <Link to={"/TP07_Productos_GrzendaME_AguileraS/quienessomos"} className='HeaderButton'>Nosotros</Link>
       </div>
-      <button className="HeaderButton"><img src={Carrito}></img></button>
+      <CartWidget></CartWidget>
     </div>
   )
 }
