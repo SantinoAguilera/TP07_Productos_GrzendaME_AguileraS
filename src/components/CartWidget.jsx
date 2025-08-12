@@ -1,11 +1,17 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Popover, OverlayTrigger } from 'react-bootstrap';
 import Carrito from '../assets/carrito negro.png';
 import './CartWidget.css';
 import { useCart } from '../context/CartContext.jsx';
 
 function MyPopoverComponent() {
-  const {cartItems, removeFromCart, clearCart, total} = useCart();
+  const {cartItems, removeFromCart, clearCart, getTotal} = useCart();
+
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    setTotal((Math.round(getTotal() * 100) / 100));
+  }, [cartItems, getTotal]);
 
   const cartItem = (item, index) => (
     <div key={index}>

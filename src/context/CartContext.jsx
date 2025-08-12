@@ -7,8 +7,6 @@ export default function CartProvider({ children }){
         const storedCart = localStorage.getItem('cart');
         return storedCart ? JSON.parse(storedCart) : [];
     });
-    
-    const [total, setTotal] = useState(0);
 
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cartItems));
@@ -16,17 +14,14 @@ export default function CartProvider({ children }){
 
     const addToCart = (newItem) => {
         setCart(prevItems => [...prevItems, newItem]);
-        setTotal(getTotal());
     }
 
     const removeFromCart = (removedItemId) => {
         setCart(prevItems => prevItems.filter(item => item.id !== removedItemId));
-        setTotal(getTotal());
     }
 
     const clearCart = () => {
         setCart([]);
-        setTotal(0);
     }
 
     const getTotal = () => {
@@ -34,7 +29,7 @@ export default function CartProvider({ children }){
     }
 
     return (
-        <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart, total }}>
+        <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart, getTotal }}>
             {children}
         </CartContext.Provider>
     );
