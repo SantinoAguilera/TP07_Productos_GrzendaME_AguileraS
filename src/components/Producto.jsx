@@ -2,8 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Carrito from '../assets/carrito.png'
 import './Producto.css'
+import { useCart } from '../context/CartContext'
 
 export default function Producto(props) {
+    const { addToCart } = useCart();
+
     return (
         <div className="producto-card card m-2">
             <img src={props.thumbnail} alt={props.title} className="card-img-top producto-img" />
@@ -11,7 +14,7 @@ export default function Producto(props) {
                 <h5 className="card-title">{props.title}</h5>
                 <p className="card-text mb-1">Categoría: {props.category}</p>
                 <p className="card-text mb-2">Precio: ${props.price}</p>
-                <button className='btn btn-primary mt-auto boton-ver-mas boton-carrito'><img src={Carrito}></img></button>
+                <button onClick={() => addToCart(props)} className='btn btn-primary mt-auto boton-ver-mas boton-carrito'><img src={Carrito}></img></button>
                 <Link to={`/TP07_Productos_GrzendaME_AguileraS/productodetalle/${props.id}`} className="btn btn-primary mt-auto boton-ver-mas">Ver más</Link>
             </div>
         </div>
