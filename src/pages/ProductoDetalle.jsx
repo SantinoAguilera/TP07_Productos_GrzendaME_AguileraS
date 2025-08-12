@@ -5,9 +5,11 @@ import Carousel from '../components/Carousel.jsx'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './ProductoDetalle.css';
+import { useCart } from '../context/CartContext.jsx';
 
 function ProductoDetalle() {
   const { id } = useParams();
+  const { addToCart } = useCart();
 
   const [producto, setProducto] = useState({});
   useEffect(() => {
@@ -23,7 +25,7 @@ function ProductoDetalle() {
       <p className="producto-detalle-categoria">Categoría: <span>{producto.category}</span></p>
       <Carousel images={producto.images} />
       <p className="producto-detalle-descripcion">{producto.description}</p>
-      <Link className="producto-detalle-boton" to="/TP07_Productos_GrzendaME_AguileraS">Añadir al carrito</Link>
+      <button onClick={() => addToCart(producto)} className="producto-detalle-boton">Añadir al carrito</button>
       <p className="producto-detalle-precio">Precio: ${producto.price}</p>
       <p className="producto-detalle-stock">Stock: <span>{producto.stock}</span></p>
       <p className="producto-detalle-tags">Tags: <span>{producto.tags?.join(', ')}</span></p>
