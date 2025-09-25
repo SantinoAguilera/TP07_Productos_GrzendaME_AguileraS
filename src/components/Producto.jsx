@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Carrito from '../assets/carrito.png'
 import './Producto.css'
 import { useCart } from '../context/CartContext'
+import PropTypes from 'prop-types'
 
 export default function Producto(props) {
     const { addToCart } = useCart();
@@ -19,4 +20,13 @@ export default function Producto(props) {
             </div>
         </div>
     )
+}
+
+Producto.propTypes = {
+    title: PropTypes.string,
+    category: PropTypes.string,
+    price: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number
+    ])
 }

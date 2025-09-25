@@ -4,7 +4,7 @@ import Carrito from '../assets/carrito negro.png';
 import './CartWidget.css';
 import { useCart } from '../context/CartContext.jsx';
 
-function MyPopoverComponent() {
+function CartWidget() {
   const { cartItems, removeFromCart, updateQuantity, clearCart, getTotal, getTotalItems } = useCart();
 
   const [total, setTotal] = useState(0);
@@ -106,4 +106,4 @@ function MyPopoverComponent() {
   );
 }
 
-export default MyPopoverComponent;
+export default CartWidget;
