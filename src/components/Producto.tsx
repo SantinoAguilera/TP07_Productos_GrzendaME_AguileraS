@@ -5,15 +5,15 @@ import './Producto.css'
 import { useCart } from '../context/CartContext.jsx'
 import PropTypes from 'prop-types'
 
-type CompProps = {
-    thumbnail: string,
-    title: string,
-    category: string,
-    price: 'string' | 'number',
-    id: number
+type ProductProps = {
+    thumbnail: string;
+    title: string;
+    category: string;
+    price: 'string' | 'number';
+    id: number;
 }
 
-export default function Producto(props: CompProps) {
+export default function Producto(props: ProductProps) {
     const { addToCart } = useCart();
 
     return (
