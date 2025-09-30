@@ -2,10 +2,18 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Carrito from '../assets/carrito.png'
 import './Producto.css'
-import { useCart } from '../context/CartContext'
+import { useCart } from '../context/CartContext.jsx'
 import PropTypes from 'prop-types'
 
-export default function Producto(props) {
+type CompProps = {
+    thumbnail: string,
+    title: string,
+    category: string,
+    price: 'string' | 'number',
+    id: number
+}
+
+export default function Producto(props: CompProps) {
     const { addToCart } = useCart();
 
     return (
@@ -22,11 +30,3 @@ export default function Producto(props) {
     )
 }
 
-Producto.propTypes = {
-    title: PropTypes.string,
-    category: PropTypes.string,
-    price: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number
-    ])
-}
