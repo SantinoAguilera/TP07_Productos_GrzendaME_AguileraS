@@ -1,9 +1,10 @@
+import type { ReactNode } from 'react';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './Navbar.css'
 import logo from '/src/assets/zarazaLogo.png';
-import CartWidget from './CartWidget';
+import CartWidget from './CartWidget.jsx';
 
 function Navbar() {
   const [categorias, setCategorias] = useState([]);
@@ -13,7 +14,7 @@ function Navbar() {
         setCategorias(res.data);
       })
   }, []);
-  let categoriaHTML = categorias.map((categoria, index) => {
+  let categoriaHTML: ReactNode = categorias.map((categoria: { slug: string; name: string }, index: number) => {
     return <li key={index}><Link className="dropdown-item" to={"/TP07_Productos_GrzendaME_AguileraS/productos/" + categoria.slug}>{categoria.name}</Link></li>
   })
 
