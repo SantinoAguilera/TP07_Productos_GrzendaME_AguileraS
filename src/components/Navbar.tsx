@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './Navbar.css'
 import logo from '/src/assets/zarazaLogo.png';
-import CartWidget from './CartWidget.jsx';
+import CartWidget from './CartWidget.tsx';
 
 function Navbar() {
   const [categorias, setCategorias] = useState([]);

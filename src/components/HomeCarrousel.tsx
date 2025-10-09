@@ -4,7 +4,10 @@ import { Link } from 'react-router-dom'
 import './HomeCarrousel.css'
 
 const HomeCarousel = () => {
-    const [randomImages, setRandomImages] = useState([]);
+    type RandomImagesType = {id: number, images: string[], title: string};
+    type ChosenImagesType = {id: number, imagen: string | undefined, titulo: string};
+
+    const [randomImages, setRandomImages] = useState<ChosenImagesType[]>([]);
 
     useEffect(() => {
         const fetchProductos = async () => {
@@ -13,11 +16,11 @@ const HomeCarousel = () => {
                 const productos = res.data.products;
 
                 const productosConImagen = productos.filter(
-                    p => Array.isArray(p.images) && p.images.length > 0
+                    (p: RandomImagesType) => Array.isArray(p.images) && p.images.length > 0
                 );
 
                 const cantidad = Math.min(4, productosConImagen.length);
-                const seleccionados = [];
+                const seleccionados: RandomImagesType[] = [];
 
                 while (seleccionados.length < cantidad) {
                     const random =
@@ -29,7 +32,7 @@ const HomeCarousel = () => {
                     }
                 }
 
-                const imagenes = seleccionados.map(p => ({
+                const imagenes: ChosenImagesType[] = seleccionados.map(p => ({
                     id: p.id,
                     imagen: p.images[0],
                     titulo: p.title

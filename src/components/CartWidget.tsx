@@ -13,7 +13,7 @@ function CartWidget() {
     setTotal((Math.round(getTotal() * 100) / 100));
   }, [cartItems, getTotal]);
 
-  const cartItem = (item) => (
+  const cartItem = (item: {id: number, thumbnail: string, title: string, price: number, quantity: number}) => (
     <tr key={item.id} className="cart-item-row">
       <td className="cart-item-image">
         <img src={item.thumbnail} alt={item.title} />
