@@ -3,7 +3,7 @@ import { createContext, useState, useContext, useEffect, type PropsWithChildren,
 type MustHaveId = Pick<CartItem, 'id'>;
 
 type CartItem = {
-    id: string;
+    id: number;
     name: string;
     price: number;
     category: string;
@@ -13,8 +13,8 @@ type CartItem = {
 type CartContextType = {
     cartItems: CartItem[];
     addToCart: (item: Omit<CartItem, 'quantity'>) => void;
-    removeFromCart: (id: string) => void;
-    updateQuantity: (id: string, quantity: number) => void;
+    removeFromCart: (id: number) => void;
+    updateQuantity: (id: number, quantity: number) => void;
     clearCart: () => void;
     getTotal: () => number;
     getTotalItems: () => number;
@@ -58,11 +58,11 @@ export default function CartProvider({ children }: CartProviderProps){
         });
       };
 
-    const removeFromCart = (removedItemId: string) => {
+    const removeFromCart = (removedItemId: number) => {
         setCart((prevItems: CartItem[]) => prevItems.filter(item => item.id !== removedItemId));
     }
 
-    const updateQuantity = (itemId: string, newQuantity: number) => {
+    const updateQuantity = (itemId: number, newQuantity: number) => {
         if (newQuantity <= 0) {
             removeFromCart(itemId);
             return;

@@ -4,9 +4,17 @@ import axios from 'axios';
 import Producto from '../components/Producto';
 import './Productos.css';
 
+type ProductoType = {
+  title: string,
+  category: string,
+  price: number,
+  thumbnail: string,
+  id: number
+}
+
 function Productos() {
   let { categoria } = useParams();
-  const [productos, setProductos] = useState([]);
+  const [productos, setProductos] = useState<ProductoType[]>([]);
   useEffect(() => {
     let url = "https://dummyjson.com/products/category/" + categoria + "?limit=0&select=title,category,price,thumbnail";
     if (categoria == "todos") url = "https://dummyjson.com/products?limit=0&select=title,category,price,thumbnail";

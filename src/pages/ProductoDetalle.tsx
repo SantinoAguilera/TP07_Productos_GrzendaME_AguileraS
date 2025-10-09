@@ -1,23 +1,48 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import Carousel from '../components/Carousel.jsx'
+import Carousel from '../components/Carousel'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './ProductoDetalle.css';
-import { useCart } from '../context/CartContext.jsx';
+import { useCart } from '../context/CartContext';
+
+type CartItem = {
+  id: string;
+  name: string;
+  price: number;
+  category: string;
+  quantity: number;
+};
+
+type ProductoType = {
+  id: string,
+  name: string,
+  title: string,
+  category: string,
+  images: string[],
+  description: string,
+  price: number,
+  stock: number,
+  tags: string[],
+  quantity: number
+}
 
 function ProductoDetalle() {
   const { id } = useParams();
   const { addToCart } = useCart();
 
-  const [producto, setProducto] = useState({});
+  const [producto, setProducto] = useState<ProductoType>();
   useEffect(() => {
     axios.get(`https://dummyjson.com/products/${id}`)
       .then((res) => {
-        setProducto(res.data);
+          setProducto(res.data);
       })
   }, [id]);
+
+  if(!producto) throw new Error("Producto can't be undefined");
+
+  let addProducto: CartItem = producto;
 
   return (
     <div className="producto-detalle-container">
