@@ -24,7 +24,7 @@ function Productos() {
       })
   }, [categoria]);
   let productosHTML = productos.map((producto, index) => {
-    return <Producto key={index} title={producto.title} category={producto.category} price={producto.price} thumbnail={producto.thumbnail} id={producto.id} />;
+    return <Producto key={index} title={producto.title} category={producto.category} price={producto.price} thumbnail={producto.thumbnail} id={producto.id} name="" quantity={1} />;
   })
 
   return (

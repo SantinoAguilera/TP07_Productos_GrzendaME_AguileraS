@@ -4,6 +4,8 @@ import Carrito from '../assets/carrito negro.png';
 import './CartWidget.css';
 import { useCart } from '../context/CartContext.jsx';
 
+type ItemType = {id: number, thumbnail?: string, title: string, price: number, quantity: number}
+
 function CartWidget() {
   const { cartItems, removeFromCart, updateQuantity, clearCart, getTotal, getTotalItems } = useCart();
 
@@ -13,7 +15,7 @@ function CartWidget() {
     setTotal((Math.round(getTotal() * 100) / 100));
   }, [cartItems, getTotal]);
 
-  const cartItem = (item: {id: string, thumbnail: string, title: string, price: number, quantity: number}) => (
+  const cartItem = (item: ItemType) => (
     <tr key={item.id} className="cart-item-row">
       <td className="cart-item-image">
         <img src={item.thumbnail} alt={item.title} />

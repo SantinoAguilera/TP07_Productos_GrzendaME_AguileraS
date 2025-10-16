@@ -15,18 +15,8 @@ type ProductProps = {
     id: number;
 }
 
-type CartItem = {
-    id: number;
-    name: string;
-    price: number;
-    category: string;
-    quantity: number;
-};
-
 export default function Producto(props: ProductProps) {
     const { addToCart } = useCart();
-
-    let addProduct: CartItem = props;
 
     return (
         <div className="producto-card card m-2">

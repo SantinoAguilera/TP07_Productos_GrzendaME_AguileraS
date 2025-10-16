@@ -1,6 +1,4 @@
-import { createContext, useState, useContext, useEffect, type PropsWithChildren, type ReactNode } from 'react';
-
-type MustHaveId = Pick<CartItem, 'id'>;
+import { createContext, useState, useContext, useEffect, type ReactNode } from 'react';
 
 type CartItem = {
     id: number;
@@ -8,6 +6,8 @@ type CartItem = {
     price: number;
     category: string;
     quantity: number;
+    thumbnail?: string;
+    title: string;
 };
 
 type CartContextType = {
@@ -36,7 +36,7 @@ export default function CartProvider({ children }: CartProviderProps){
         localStorage.setItem('cart', JSON.stringify(cartItems));
     }, [cartItems]);
 
-    const addToCart = (newItem: Omit<CartItem, 'quantity'> & { id: string }) => {
+    const addToCart = (newItem: Omit<CartItem, 'quantity'> & { id: number }) => {
         setCart((prevItems: CartItem[]) => {
           const existingItemIndex = prevItems.findIndex(item => item.id === newItem.id);
       

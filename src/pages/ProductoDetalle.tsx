@@ -8,15 +8,17 @@ import './ProductoDetalle.css';
 import { useCart } from '../context/CartContext';
 
 type CartItem = {
-  id: string;
+  id: number;
   name: string;
   price: number;
   category: string;
   quantity: number;
+  thumbnail?: string;
+  title: string;
 };
 
 type ProductoType = {
-  id: string,
+  id: number,
   name: string,
   title: string,
   category: string,
@@ -36,11 +38,13 @@ function ProductoDetalle() {
   useEffect(() => {
     axios.get(`https://dummyjson.com/products/${id}`)
       .then((res) => {
-          setProducto(res.data);
+        setProducto(res.data);
       })
   }, [id]);
 
-  if(!producto) throw new Error("Producto can't be undefined");
+  if (!producto) {
+    return <p>Cargando producto</p>;
+  }
 
   let addProducto: CartItem = producto;
 
@@ -50,7 +54,7 @@ function ProductoDetalle() {
       <p className="producto-detalle-categoria">Categoría: <span>{producto.category}</span></p>
       <Carousel images={producto.images} />
       <p className="producto-detalle-descripcion">{producto.description}</p>
-      <button onClick={() => addToCart(producto)} className="producto-detalle-boton">Añadir al carrito</button>
+      <button onClick={() => addToCart(addProducto)} className="producto-detalle-boton">Añadir al carrito</button>
       <p className="producto-detalle-precio">Precio: ${producto.price}</p>
       <p className="producto-detalle-stock">Stock: <span>{producto.stock}</span></p>
       <p className="producto-detalle-tags">Tags: <span>{producto.tags?.join(', ')}</span></p>
