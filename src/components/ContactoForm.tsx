@@ -21,11 +21,10 @@ const ContactForm = () => {
               <label htmlFor="message" className="form-label">Mensaje</label>
               <textarea className="form-control" id="message" rows={4} placeholder="Escribe tu mensaje aquí..."></textarea>
             </div>
-
-            <button className="btn btn-secondary w-100">
-              Enviar
-            </button>
           </form>
+          <button className="btn btn-secondary w-100">
+            Enviar
+          </button>
         </div>
       </div>
     </div>
